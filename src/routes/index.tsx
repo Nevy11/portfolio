@@ -130,53 +130,44 @@ function Home() {
         viewport={{ once: true, margin: "-100px" }}
         variants={containerVariants}
       >
-        <motion.div variants={itemVariants} className="flex flex-col gap-2">
-          <div className="flex items-center gap-3 text-emerald-400">
+        <motion.div variants={itemVariants} className="flex flex-col items-center text-center gap-2 mb-8">
+          <div className="flex items-center justify-center gap-3 text-emerald-400">
             <Briefcase className="w-6 h-6" />
             <h2 className="text-3xl font-bold text-white tracking-tight">Professional Experience</h2>
           </div>
           <p className="text-slate-400">A track record of building robust systems and leading technical teams.</p>
         </motion.div>
 
-        <div className="flex flex-col gap-6 relative border-l border-slate-800 ml-3 md:ml-4 pl-6 md:pl-8">
-          <motion.div variants={itemVariants} className="relative group">
-            <div className="absolute -left-[31px] md:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-emerald-500 border-4 border-slate-950 group-hover:scale-125 transition-transform" />
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-2">
-              <h3 className="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors">Lead Full-Stack Developer</h3>
-              <span className="inline-flex items-center gap-1.5 text-sm text-slate-400 px-2.5 py-1 rounded-md bg-slate-800/50 border border-slate-700 w-fit">
-                <Calendar className="w-3 h-3" /> 2023 — Present
-              </span>
-            </div>
-            <h4 className="text-emerald-500 font-medium mb-3">Vault OS</h4>
-            <p className="text-slate-400 text-sm leading-relaxed mb-3">
+        <div className="flex flex-col gap-12 max-w-4xl mx-auto w-full">
+          <motion.div variants={itemVariants} className="flex flex-col items-center text-center group">
+            <span className="inline-flex items-center justify-center gap-1.5 text-sm text-slate-400 px-3 py-1.5 rounded-full bg-slate-800/50 border border-slate-700 w-fit mb-4">
+              <Calendar className="w-3 h-3" /> 2023 — Present
+            </span>
+            <h3 className="text-2xl font-bold text-white group-hover:text-emerald-400 transition-colors">Lead Full-Stack Developer</h3>
+            <h4 className="text-lg text-emerald-500 font-medium mt-1 mb-4">Vault OS</h4>
+            <p className="text-slate-400 text-base leading-relaxed max-w-2xl mx-auto">
               Leading the architectural design and implementation of a highly resilient financial command center handling multi-currency wallets, complex KYC onboarding, and sub-50ms integrations with Stripe and M-Pesa. Spearheaded edge-compute deployments ensuring 100% ACID compliance.
             </p>
           </motion.div>
 
-          <motion.div variants={itemVariants} className="relative group mt-6">
-            <div className="absolute -left-[31px] md:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-slate-700 border-4 border-slate-950 group-hover:bg-emerald-500 transition-colors" />
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-2">
-              <h3 className="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors">Core Technical Advisor & Developer</h3>
-              <span className="inline-flex items-center gap-1.5 text-sm text-slate-400 px-2.5 py-1 rounded-md bg-slate-800/50 border border-slate-700 w-fit">
-                <Calendar className="w-3 h-3" /> 2022 — 2023
-              </span>
-            </div>
-            <h4 className="text-slate-300 font-medium mb-3">Smart Blossoming Foundation</h4>
-            <p className="text-slate-400 text-sm leading-relaxed mb-3">
+          <motion.div variants={itemVariants} className="flex flex-col items-center text-center group">
+            <span className="inline-flex items-center justify-center gap-1.5 text-sm text-slate-400 px-3 py-1.5 rounded-full bg-slate-800/50 border border-slate-700 w-fit mb-4">
+              <Calendar className="w-3 h-3" /> 2022 — 2023
+            </span>
+            <h3 className="text-2xl font-bold text-white group-hover:text-emerald-400 transition-colors">Core Technical Advisor & Developer</h3>
+            <h4 className="text-lg text-slate-300 font-medium mt-1 mb-4">Smart Blossoming Foundation</h4>
+            <p className="text-slate-400 text-base leading-relaxed max-w-2xl mx-auto">
               Engineered a highly performant, bilingual wellness portal capable of operating flawlessly on low-bandwidth connections. Designed and implemented complex psychological quantitative growth-tracking metrics secured locally via edge-compute infrastructure.
             </p>
           </motion.div>
 
-          <motion.div variants={itemVariants} className="relative group mt-6">
-            <div className="absolute -left-[31px] md:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-slate-700 border-4 border-slate-950 group-hover:bg-emerald-500 transition-colors" />
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-2">
-              <h3 className="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors">Founder & Operator</h3>
-              <span className="inline-flex items-center gap-1.5 text-sm text-slate-400 px-2.5 py-1 rounded-md bg-slate-800/50 border border-slate-700 w-fit">
-                <Calendar className="w-3 h-3" /> 2019 — 2022
-              </span>
-            </div>
-            <h4 className="text-slate-300 font-medium mb-3">Cyber Cafe & PS4 Hub</h4>
-            <p className="text-slate-400 text-sm leading-relaxed mb-3">
+          <motion.div variants={itemVariants} className="flex flex-col items-center text-center group">
+            <span className="inline-flex items-center justify-center gap-1.5 text-sm text-slate-400 px-3 py-1.5 rounded-full bg-slate-800/50 border border-slate-700 w-fit mb-4">
+              <Calendar className="w-3 h-3" /> 2019 — 2022
+            </span>
+            <h3 className="text-2xl font-bold text-white group-hover:text-emerald-400 transition-colors">Founder & Operator</h3>
+            <h4 className="text-lg text-slate-300 font-medium mt-1 mb-4">Cyber Cafe & PS4 Hub</h4>
+            <p className="text-slate-400 text-base leading-relaxed max-w-2xl mx-auto">
               Successfully launched and managed a local gaming and internet hub, honing skills in hardware management, local networking, customer relations, and business operations. Gained deep exposure to Linux environments and foundational networking concepts.
             </p>
           </motion.div>
