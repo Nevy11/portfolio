@@ -138,14 +138,14 @@ function Home() {
           <p className="text-slate-400">A track record of building robust systems and leading technical teams.</p>
         </motion.div>
 
-        <div className="flex flex-col gap-12 max-w-4xl mx-auto w-full">
+        <div className="flex flex-col gap-12 max-w-6xl mx-auto w-full">
           <motion.div variants={itemVariants} className="flex flex-col items-center text-center group">
             <span className="inline-flex items-center justify-center gap-1.5 text-sm text-slate-400 px-3 py-1.5 rounded-full bg-slate-800/50 border border-slate-700 w-fit mb-4">
               <Calendar className="w-3 h-3" /> 2023 — Present
             </span>
             <h3 className="text-2xl font-bold text-white group-hover:text-emerald-400 transition-colors">Lead Full-Stack Developer</h3>
             <h4 className="text-lg text-emerald-500 font-medium mt-1 mb-4">Vault OS</h4>
-            <p className="text-slate-400 text-base leading-relaxed max-w-2xl mx-auto">
+            <p className="text-slate-400 text-base leading-relaxed max-w-4xl mx-auto">
               Leading the architectural design and implementation of a highly resilient financial command center handling multi-currency wallets, complex KYC onboarding, and sub-50ms integrations with Stripe and M-Pesa. Spearheaded edge-compute deployments ensuring 100% ACID compliance.
             </p>
           </motion.div>
@@ -156,7 +156,7 @@ function Home() {
             </span>
             <h3 className="text-2xl font-bold text-white group-hover:text-emerald-400 transition-colors">Core Technical Advisor & Developer</h3>
             <h4 className="text-lg text-slate-300 font-medium mt-1 mb-4">Smart Blossoming Foundation</h4>
-            <p className="text-slate-400 text-base leading-relaxed max-w-2xl mx-auto">
+            <p className="text-slate-400 text-base leading-relaxed max-w-4xl mx-auto">
               Engineered a highly performant, bilingual wellness portal capable of operating flawlessly on low-bandwidth connections. Designed and implemented complex psychological quantitative growth-tracking metrics secured locally via edge-compute infrastructure.
             </p>
           </motion.div>
@@ -167,7 +167,7 @@ function Home() {
             </span>
             <h3 className="text-2xl font-bold text-white group-hover:text-emerald-400 transition-colors">Founder & Operator</h3>
             <h4 className="text-lg text-slate-300 font-medium mt-1 mb-4">Cyber Cafe & PS4 Hub</h4>
-            <p className="text-slate-400 text-base leading-relaxed max-w-2xl mx-auto">
+            <p className="text-slate-400 text-base leading-relaxed max-w-4xl mx-auto">
               Successfully launched and managed a local gaming and internet hub, honing skills in hardware management, local networking, customer relations, and business operations. Gained deep exposure to Linux environments and foundational networking concepts.
             </p>
           </motion.div>
