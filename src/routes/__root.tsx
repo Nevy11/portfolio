@@ -93,7 +93,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       </head>
       <body className="bg-slate-950 text-slate-200 font-sans antialiased min-h-screen flex flex-col selection:bg-emerald-500/30">
         <header className="sticky top-0 z-50 w-full border-b border-slate-800 bg-slate-950/80 backdrop-blur">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+          <div className="w-full px-4 sm:px-8 lg:px-12 xl:px-16 h-16 flex items-center justify-between">
             <Link to="/" className="flex items-center gap-2 group">
               <div className="p-1.5 bg-emerald-500/10 rounded-md border border-emerald-500/20 group-hover:border-emerald-500/40 transition-colors">
                 <Terminal className="w-5 h-5 text-emerald-400" />
@@ -112,7 +112,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           </div>
         </header>
 
-        <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full flex flex-col">
+        <main className="flex-1 w-full px-4 sm:px-8 lg:px-12 xl:px-16 py-10 flex flex-col">
           <AnimatePresence mode="wait">
             <motion.div
               key={location.pathname}
@@ -128,7 +128,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         </main>
 
         <footer className="border-t border-slate-800 bg-slate-950/50 py-8 mt-auto">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="w-full px-4 sm:px-8 lg:px-12 xl:px-16 flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-sm text-slate-500">
               © {new Date().getFullYear()} Stephen Mainda. All rights reserved. Building secure & scalable systems.
             </p>
