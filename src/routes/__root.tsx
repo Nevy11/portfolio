@@ -10,6 +10,7 @@ import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
 import * as React from 'react'
 import { DefaultCatchBoundary } from '~/components/DefaultCatchBoundary'
 import { NotFound } from '~/components/NotFound'
+import { CommandPalette } from '~/components/CommandPalette'
 import appCss from '~/styles/app.css?url'
 import { seo } from '~/utils/seo'
 import { Terminal, Mail, FileText } from 'lucide-react'
@@ -105,6 +106,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
               <Link to="/" className="text-slate-400 hover:text-white transition-colors" activeProps={{ className: 'text-white' }} activeOptions={{ exact: true }}>Home</Link>
               <a href="#projects" className="text-slate-400 hover:text-white transition-colors">Projects</a>
               <Link to="/resume" className="text-slate-400 hover:text-emerald-400 transition-colors flex items-center gap-1"><FileText className="w-4 h-4"/> Resume</Link>
+              <Link to="/contact" className="text-slate-400 hover:text-emerald-400 transition-colors flex items-center gap-1"><Mail className="w-4 h-4"/> Contact</Link>
               <a href="https://github.com/Nevy11" target="_blank" rel="noreferrer" className="text-slate-400 hover:text-white transition-colors">
                 <Github className="w-5 h-5" />
               </a>
@@ -129,8 +131,11 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 
         <footer className="border-t border-slate-800 bg-slate-950/50 py-8 mt-auto">
           <div className="w-full px-4 sm:px-8 lg:px-12 xl:px-16 flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-slate-500">
-              © {new Date().getFullYear()} Stephen Mainda. All rights reserved. Building secure & scalable systems.
+            <p className="text-sm text-slate-500 flex items-center gap-2">
+              © {new Date().getFullYear()} Stephen Mainda. All rights reserved. 
+              <span className="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 rounded bg-slate-800 border border-slate-700 text-xs text-slate-400">
+                Press <kbd className="font-mono text-emerald-400">/</kbd> to search
+              </span>
             </p>
             <div className="flex items-center gap-4 text-slate-500">
               <a href="https://github.com/Nevy11" target="_blank" rel="noreferrer" className="hover:text-emerald-400 transition-colors"><Github className="w-4 h-4" /></a>
@@ -141,6 +146,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           </div>
         </footer>
         
+        <CommandPalette />
         <Scripts />
       </body>
     </html>

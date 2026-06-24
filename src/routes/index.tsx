@@ -5,6 +5,8 @@ import { motion, Variants } from 'framer-motion'
 import { PROJECTS } from '~/data/projects'
 import { SkillsEcosystem } from '~/components/SkillsEcosystem'
 
+import { AnimatePresence } from 'framer-motion'
+
 export const Route = createFileRoute('/')({
   component: Home,
 })
@@ -30,6 +32,15 @@ const itemVariants: Variants = {
 }
 
 function Home() {
+  const [filter, setFilter] = React.useState('All')
+  
+  const filteredProjects = React.useMemo(() => {
+    if (filter === 'All') return PROJECTS
+    if (filter === 'Production') return PROJECTS.filter(p => p.type.includes('Production'))
+    if (filter === 'Deep-Dive') return PROJECTS.filter(p => p.type.includes('Deep-Dive'))
+    return PROJECTS
+  }, [filter])
+
   return (
     <div className="flex flex-col gap-24 pb-12 overflow-x-hidden">
       {/* Hero Section */}
@@ -182,19 +193,42 @@ function Home() {
         viewport={{ once: true, margin: "-100px" }}
         variants={containerVariants}
       >
-        <motion.div variants={itemVariants} className="flex flex-col gap-2">
-          <h2 className="text-3xl font-bold text-white tracking-tight">Featured Engineering</h2>
-          <p className="text-slate-400">A selection of production systems and architectural explorations.</p>
-        </motion.div>
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <motion.div variants={itemVariants} className="flex flex-col gap-2">
+            <h2 className="text-3xl font-bold text-white tracking-tight">Featured Engineering</h2>
+            <p className="text-slate-400">A selection of production systems and architectural explorations.</p>
+          </motion.div>
+          
+          <motion.div variants={itemVariants} className="flex items-center gap-2 bg-slate-900/50 p-1.5 rounded-xl border border-slate-800 w-fit">
+            {['All', 'Production', 'Deep-Dive'].map(f => (
+              <button
+                key={f}
+                onClick={() => setFilter(f)}
+                className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all ${
+                  filter === f 
+                    ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/20' 
+                    : 'text-slate-400 hover:text-white hover:bg-slate-800'
+                }`}
+              >
+                {f}
+              </button>
+            ))}
+          </motion.div>
+        </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {PROJECTS.map((project, idx) => (
-            <motion.div 
-              key={project.id} 
-              variants={itemVariants}
-              whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
-              className="group flex flex-col p-6 rounded-2xl border border-slate-800 bg-slate-900/50 hover:bg-slate-900 transition-colors gap-6 relative overflow-hidden"
-            >
+        <motion.div layout className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((project, idx) => (
+              <motion.div 
+                key={project.id} 
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3 }}
+                whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+                className="group flex flex-col p-6 rounded-2xl border border-slate-800 bg-slate-900/50 hover:bg-slate-900 transition-colors gap-6 relative overflow-hidden"
+              >
               <div className="flex flex-col gap-3 z-10">
                 <div className="flex items-center justify-between">
                   <span className={`text-xs font-bold px-2.5 py-1 rounded-full border ${project.typeColor}`}>
@@ -234,8 +268,9 @@ function Home() {
               
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/0 via-transparent to-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
             </motion.div>
-          ))}
-        </div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </motion.section>
 
       {/* Get in Touch */}
@@ -254,9 +289,13 @@ function Home() {
           I'm currently exploring new opportunities to architect complex systems and build beautiful interfaces. Feel free to reach out.
         </motion.p>
         <motion.div variants={itemVariants} className="flex items-center gap-4 mt-2">
-          <a href="mailto:smongare2004@gmail.com" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white font-semibold transition-all">
-            <Mail className="w-4 h-4" /> Contact Me
-          </a>
+          <Link 
+            to="/contact"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold transition-all shadow-[0_0_30px_rgba(16,185,129,0.3)]"
+          >
+            <Mail className="w-5 h-5" />
+            Initialize Comm Link
+          </Link>
         </motion.div>
       </motion.section>
 

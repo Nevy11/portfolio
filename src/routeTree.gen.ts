@@ -15,6 +15,7 @@ import { Route as RedirectRouteImport } from './routes/redirect'
 import { Route as PostsRouteImport } from './routes/posts'
 import { Route as DeferredRouteImport } from './routes/deferred'
 import { Route as CustomScriptDotjsRouteImport } from './routes/customScript[.]js'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as PathlessLayoutRouteImport } from './routes/_pathlessLayout'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as UsersIndexRouteImport } from './routes/users.index'
@@ -57,6 +58,11 @@ const DeferredRoute = DeferredRouteImport.update({
 const CustomScriptDotjsRoute = CustomScriptDotjsRouteImport.update({
   id: '/customScript.js',
   path: '/customScript.js',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PathlessLayoutRoute = PathlessLayoutRouteImport.update({
@@ -128,6 +134,7 @@ const PathlessLayoutNestedLayoutRouteARoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
   '/customScript.js': typeof CustomScriptDotjsRoute
   '/deferred': typeof DeferredRoute
   '/posts': typeof PostsRouteWithChildren
@@ -147,6 +154,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
   '/customScript.js': typeof CustomScriptDotjsRoute
   '/deferred': typeof DeferredRoute
   '/redirect': typeof RedirectRoute
@@ -166,6 +174,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_pathlessLayout': typeof PathlessLayoutRouteWithChildren
+  '/contact': typeof ContactRoute
   '/customScript.js': typeof CustomScriptDotjsRoute
   '/deferred': typeof DeferredRoute
   '/posts': typeof PostsRouteWithChildren
@@ -188,6 +197,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/contact'
     | '/customScript.js'
     | '/deferred'
     | '/posts'
@@ -207,6 +217,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/contact'
     | '/customScript.js'
     | '/deferred'
     | '/redirect'
@@ -225,6 +236,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/_pathlessLayout'
+    | '/contact'
     | '/customScript.js'
     | '/deferred'
     | '/posts'
@@ -247,6 +259,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   PathlessLayoutRoute: typeof PathlessLayoutRouteWithChildren
+  ContactRoute: typeof ContactRoute
   CustomScriptDotjsRoute: typeof CustomScriptDotjsRoute
   DeferredRoute: typeof DeferredRoute
   PostsRoute: typeof PostsRouteWithChildren
@@ -300,6 +313,13 @@ declare module '@tanstack/react-router' {
       path: '/customScript.js'
       fullPath: '/customScript.js'
       preLoaderRoute: typeof CustomScriptDotjsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_pathlessLayout': {
@@ -465,6 +485,7 @@ const ApiUsersRouteWithChildren = ApiUsersRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   PathlessLayoutRoute: PathlessLayoutRouteWithChildren,
+  ContactRoute: ContactRoute,
   CustomScriptDotjsRoute: CustomScriptDotjsRoute,
   DeferredRoute: DeferredRoute,
   PostsRoute: PostsRouteWithChildren,
