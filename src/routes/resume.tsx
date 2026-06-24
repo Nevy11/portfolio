@@ -139,9 +139,15 @@ function ResumePage() {
             <h3 className="text-lg font-bold text-slate-900 uppercase tracking-wide border-b border-slate-200 pb-1 mb-3">Education</h3>
             <div className="flex justify-between items-baseline">
               <div>
-                <h4 className="text-base font-bold text-slate-900">Self-Taught Engineering Paradigm</h4>
-                <p className="text-sm text-slate-700">Continuous rigorous learning, architectural deep-dives, and production deployments.</p>
+                <h4 className="text-base font-bold text-slate-900">Bachelor of Science in Computer Science</h4>
+                <p className="text-sm font-medium text-emerald-600 mb-1">Laikipia University – Nyahururu, Kenya</p>
+                <p className="text-sm text-slate-700 mt-2">
+                  <strong className="text-slate-900">Relevant Coursework:</strong> Artificial Intelligence, Machine Learning Theory, Data Structures, Database Systems, Computer Networks, Web Development, Distributed Systems.
+                </p>
               </div>
+              <span className="text-sm font-bold text-slate-900 text-right shrink-0 ml-4">
+                Expected: 2026
+              </span>
             </div>
           </section>
 

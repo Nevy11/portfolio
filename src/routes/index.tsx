@@ -51,32 +51,31 @@ function Home() {
         variants={containerVariants}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-emerald-500/5 to-transparent -z-10 rounded-3xl" />
-        <div className="flex flex-col gap-6 max-w-3xl">
-          <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-slate-800 bg-slate-900/50 w-fit">
+        <div className="flex flex-col gap-6 max-w-4xl mx-auto items-center text-center pt-8">
+          <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-slate-800 bg-slate-900/50 w-fit mx-auto">
             <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
             <span className="text-sm font-medium text-slate-300">Available for new opportunities</span>
           </motion.div>
           
-          <motion.h1 variants={itemVariants} className="text-5xl lg:text-7xl font-extrabold tracking-tight text-white">
+          <motion.h1 variants={itemVariants} className="text-5xl lg:text-7xl font-extrabold tracking-tight text-white text-center">
             Architecting <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600">secure systems</span> & intelligent interfaces.
           </motion.h1>
           
-          <motion.p variants={itemVariants} className="text-lg lg:text-xl text-slate-400 leading-relaxed max-w-2xl">
+          <motion.p variants={itemVariants} className="text-lg lg:text-xl text-slate-400 leading-relaxed max-w-2xl text-center mx-auto">
             Senior Frontend Engineer & UI/UX Designer specializing in React, TanStack Start, and high-performance server architectures. I build scalable, production-grade applications that solve complex problems.
           </motion.p>
           
-          <motion.div variants={itemVariants} className="flex items-center gap-4 mt-4">
-            <a href="#projects" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white font-semibold transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)]">
+          <motion.div variants={itemVariants} className="flex flex-wrap items-center justify-center gap-4 mt-6">
+            <a href="#projects" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white font-semibold transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)]">
               View Projects
               <ArrowRight className="w-4 h-4" />
             </a>
-            <Link to="/resume" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-semibold transition-colors border border-slate-700 hover:border-slate-600">
+            <Link to="/resume" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-semibold transition-colors border border-slate-700 hover:border-slate-600">
               <FileText className="w-4 h-4" />
               View Resume
             </Link>
-            <a href="https://github.com/Nevy11" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-semibold transition-colors border border-slate-700 hover:border-slate-600">
-              <Globe className="w-4 h-4" />
-              GitHub
+            <a href="https://github.com/Nevy11" target="_blank" rel="noreferrer" className="inline-flex items-center justify-center p-3 rounded-lg bg-slate-800/50 hover:bg-slate-800 text-slate-300 hover:text-white transition-colors border border-slate-800 hover:border-slate-700">
+              <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
             </a>
           </motion.div>
         </div>
