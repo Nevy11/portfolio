@@ -11,12 +11,15 @@ export default defineConfig({
   resolve: {
     tsconfigPaths: true,
   },
+  ssr: {
+    noExternal: ['lucide-react'],
+  },
   plugins: [
     tailwindcss(),
     tanstackStart({
       srcDirectory: 'src',
     }),
     viteReact(),
-    nitro(),
+    nitro({ preset: 'cloudflare-module' }),
   ],
 })

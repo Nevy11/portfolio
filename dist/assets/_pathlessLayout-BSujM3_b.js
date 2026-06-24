@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime-DGeXAQPT.js";import{l as t}from"./index-DsV18TT0.js";var n=e();function r(){return(0,n.jsxs)(`div`,{className:`p-2`,children:[(0,n.jsx)(`div`,{className:`border-b`,children:`I'm a layout`}),(0,n.jsx)(`div`,{children:(0,n.jsx)(t,{})})]})}export{r as component};

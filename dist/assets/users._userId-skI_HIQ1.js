@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime-DGeXAQPT.js";import{u as t}from"./index-DsV18TT0.js";var n=e();function r({error:e}){return(0,n.jsx)(t,{error:e})}var i=r;export{i as errorComponent};

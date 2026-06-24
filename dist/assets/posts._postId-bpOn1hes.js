@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime-DGeXAQPT.js";import{c as t}from"./index-DsV18TT0.js";var n=e(),r=()=>(0,n.jsx)(t,{children:`Post not found`});export{r as notFoundComponent};
