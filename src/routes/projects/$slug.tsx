@@ -23,7 +23,7 @@ function ProjectCaseStudy() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto flex flex-col gap-12 pb-20 fade-in">
+    <div className="w-full flex flex-col gap-12 pb-20 fade-in">
       {/* Header */}
       <div className="flex flex-col gap-6 pt-10">
         <Link to="/" className="text-slate-400 hover:text-white flex items-center gap-2 w-fit transition-colors">
@@ -45,6 +45,17 @@ function ProjectCaseStudy() {
             {project.description}
           </p>
         </div>
+
+        {project.image && (
+          <div className="w-full mt-6 rounded-2xl overflow-hidden border border-slate-800 shadow-2xl relative group">
+            <div className="absolute inset-0 bg-emerald-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 mix-blend-overlay z-10"></div>
+            <img 
+              src={project.image} 
+              alt={`${project.title} Mockup`} 
+              className="w-full h-auto object-cover transform group-hover:scale-[1.02] transition-transform duration-700 ease-out"
+            />
+          </div>
+        )}
 
         <div className="flex flex-wrap gap-2 mt-4">
           {project.stack.map(tech => (

@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { ArrowRight, Code2, Cpu, Database, Globe, Server, Shield, Mail } from 'lucide-react'
+import { ArrowRight, Code2, Cpu, Database, Globe, Server, Shield, Mail, FileText, Briefcase, Calendar } from 'lucide-react'
 import * as React from 'react'
 import { motion, Variants } from 'framer-motion'
 import { PROJECTS } from '~/data/projects'
@@ -59,6 +59,10 @@ function Home() {
               View Projects
               <ArrowRight className="w-4 h-4" />
             </a>
+            <Link to="/resume" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-semibold transition-colors border border-slate-700 hover:border-slate-600">
+              <FileText className="w-4 h-4" />
+              View Resume
+            </Link>
             <a href="https://github.com/Nevy11" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-semibold transition-colors border border-slate-700 hover:border-slate-600">
               <Globe className="w-4 h-4" />
               GitHub
@@ -106,6 +110,67 @@ function Home() {
         <motion.div variants={itemVariants} className="w-full overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/30">
           <SkillsEcosystem />
         </motion.div>
+      </motion.section>
+
+      {/* Professional Experience Timeline */}
+      <motion.section 
+        className="flex flex-col gap-8 w-full mt-8"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={containerVariants}
+      >
+        <motion.div variants={itemVariants} className="flex flex-col gap-2">
+          <div className="flex items-center gap-3 text-emerald-400">
+            <Briefcase className="w-6 h-6" />
+            <h2 className="text-3xl font-bold text-white tracking-tight">Professional Experience</h2>
+          </div>
+          <p className="text-slate-400">A track record of building robust systems and leading technical teams.</p>
+        </motion.div>
+
+        <div className="flex flex-col gap-6 relative border-l border-slate-800 ml-3 md:ml-4 pl-6 md:pl-8">
+          <motion.div variants={itemVariants} className="relative group">
+            <div className="absolute -left-[31px] md:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-emerald-500 border-4 border-slate-950 group-hover:scale-125 transition-transform" />
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-2">
+              <h3 className="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors">Lead Full-Stack Developer</h3>
+              <span className="inline-flex items-center gap-1.5 text-sm text-slate-400 px-2.5 py-1 rounded-md bg-slate-800/50 border border-slate-700 w-fit">
+                <Calendar className="w-3 h-3" /> 2023 — Present
+              </span>
+            </div>
+            <h4 className="text-emerald-500 font-medium mb-3">Vault OS</h4>
+            <p className="text-slate-400 text-sm leading-relaxed mb-3">
+              Leading the architectural design and implementation of a highly resilient financial command center handling multi-currency wallets, complex KYC onboarding, and sub-50ms integrations with Stripe and M-Pesa. Spearheaded edge-compute deployments ensuring 100% ACID compliance.
+            </p>
+          </motion.div>
+
+          <motion.div variants={itemVariants} className="relative group mt-6">
+            <div className="absolute -left-[31px] md:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-slate-700 border-4 border-slate-950 group-hover:bg-emerald-500 transition-colors" />
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-2">
+              <h3 className="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors">Core Technical Advisor & Developer</h3>
+              <span className="inline-flex items-center gap-1.5 text-sm text-slate-400 px-2.5 py-1 rounded-md bg-slate-800/50 border border-slate-700 w-fit">
+                <Calendar className="w-3 h-3" /> 2022 — 2023
+              </span>
+            </div>
+            <h4 className="text-slate-300 font-medium mb-3">Smart Blossoming Foundation</h4>
+            <p className="text-slate-400 text-sm leading-relaxed mb-3">
+              Engineered a highly performant, bilingual wellness portal capable of operating flawlessly on low-bandwidth connections. Designed and implemented complex psychological quantitative growth-tracking metrics secured locally via edge-compute infrastructure.
+            </p>
+          </motion.div>
+
+          <motion.div variants={itemVariants} className="relative group mt-6">
+            <div className="absolute -left-[31px] md:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-slate-700 border-4 border-slate-950 group-hover:bg-emerald-500 transition-colors" />
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-2">
+              <h3 className="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors">Founder & Operator</h3>
+              <span className="inline-flex items-center gap-1.5 text-sm text-slate-400 px-2.5 py-1 rounded-md bg-slate-800/50 border border-slate-700 w-fit">
+                <Calendar className="w-3 h-3" /> 2019 — 2022
+              </span>
+            </div>
+            <h4 className="text-slate-300 font-medium mb-3">Cyber Cafe & PS4 Hub</h4>
+            <p className="text-slate-400 text-sm leading-relaxed mb-3">
+              Successfully launched and managed a local gaming and internet hub, honing skills in hardware management, local networking, customer relations, and business operations. Gained deep exposure to Linux environments and foundational networking concepts.
+            </p>
+          </motion.div>
+        </div>
       </motion.section>
 
       {/* Selected Projects */}

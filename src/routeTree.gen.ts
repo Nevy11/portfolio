@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UsersRouteImport } from './routes/users'
+import { Route as ResumeRouteImport } from './routes/resume'
 import { Route as RedirectRouteImport } from './routes/redirect'
 import { Route as PostsRouteImport } from './routes/posts'
 import { Route as DeferredRouteImport } from './routes/deferred'
@@ -31,6 +32,11 @@ import { Route as PathlessLayoutNestedLayoutRouteARouteImport } from './routes/_
 const UsersRoute = UsersRouteImport.update({
   id: '/users',
   path: '/users',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResumeRoute = ResumeRouteImport.update({
+  id: '/resume',
+  path: '/resume',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RedirectRoute = RedirectRouteImport.update({
@@ -126,6 +132,7 @@ export interface FileRoutesByFullPath {
   '/deferred': typeof DeferredRoute
   '/posts': typeof PostsRouteWithChildren
   '/redirect': typeof RedirectRoute
+  '/resume': typeof ResumeRoute
   '/users': typeof UsersRouteWithChildren
   '/api/users': typeof ApiUsersRouteWithChildren
   '/posts/$postId': typeof PostsPostIdRoute
@@ -143,6 +150,7 @@ export interface FileRoutesByTo {
   '/customScript.js': typeof CustomScriptDotjsRoute
   '/deferred': typeof DeferredRoute
   '/redirect': typeof RedirectRoute
+  '/resume': typeof ResumeRoute
   '/api/users': typeof ApiUsersRouteWithChildren
   '/posts/$postId': typeof PostsPostIdRoute
   '/projects/$slug': typeof ProjectsSlugRoute
@@ -162,6 +170,7 @@ export interface FileRoutesById {
   '/deferred': typeof DeferredRoute
   '/posts': typeof PostsRouteWithChildren
   '/redirect': typeof RedirectRoute
+  '/resume': typeof ResumeRoute
   '/users': typeof UsersRouteWithChildren
   '/_pathlessLayout/_nested-layout': typeof PathlessLayoutNestedLayoutRouteWithChildren
   '/api/users': typeof ApiUsersRouteWithChildren
@@ -183,6 +192,7 @@ export interface FileRouteTypes {
     | '/deferred'
     | '/posts'
     | '/redirect'
+    | '/resume'
     | '/users'
     | '/api/users'
     | '/posts/$postId'
@@ -200,6 +210,7 @@ export interface FileRouteTypes {
     | '/customScript.js'
     | '/deferred'
     | '/redirect'
+    | '/resume'
     | '/api/users'
     | '/posts/$postId'
     | '/projects/$slug'
@@ -218,6 +229,7 @@ export interface FileRouteTypes {
     | '/deferred'
     | '/posts'
     | '/redirect'
+    | '/resume'
     | '/users'
     | '/_pathlessLayout/_nested-layout'
     | '/api/users'
@@ -239,6 +251,7 @@ export interface RootRouteChildren {
   DeferredRoute: typeof DeferredRoute
   PostsRoute: typeof PostsRouteWithChildren
   RedirectRoute: typeof RedirectRoute
+  ResumeRoute: typeof ResumeRoute
   UsersRoute: typeof UsersRouteWithChildren
   ApiUsersRoute: typeof ApiUsersRouteWithChildren
   ProjectsSlugRoute: typeof ProjectsSlugRoute
@@ -252,6 +265,13 @@ declare module '@tanstack/react-router' {
       path: '/users'
       fullPath: '/users'
       preLoaderRoute: typeof UsersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resume': {
+      id: '/resume'
+      path: '/resume'
+      fullPath: '/resume'
+      preLoaderRoute: typeof ResumeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/redirect': {
@@ -449,6 +469,7 @@ const rootRouteChildren: RootRouteChildren = {
   DeferredRoute: DeferredRoute,
   PostsRoute: PostsRouteWithChildren,
   RedirectRoute: RedirectRoute,
+  ResumeRoute: ResumeRoute,
   UsersRoute: UsersRouteWithChildren,
   ApiUsersRoute: ApiUsersRouteWithChildren,
   ProjectsSlugRoute: ProjectsSlugRoute,

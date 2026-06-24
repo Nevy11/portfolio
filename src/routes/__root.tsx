@@ -12,7 +12,9 @@ import { DefaultCatchBoundary } from '~/components/DefaultCatchBoundary'
 import { NotFound } from '~/components/NotFound'
 import appCss from '~/styles/app.css?url'
 import { seo } from '~/utils/seo'
-import { Terminal, Mail } from 'lucide-react'
+import { Terminal, Mail, FileText } from 'lucide-react'
+import { AnimatePresence, motion } from 'framer-motion'
+import { useLocation } from '@tanstack/react-router'
 
 const Github = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" className={className} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -43,8 +45,8 @@ export const Route = createRootRoute({
         content: 'width=device-width, initial-scale=1',
       },
       ...seo({
-        title: 'Nevy | Senior Frontend Engineer & UI/UX Designer',
-        description: `Portfolio of Nevy - Architecting secure systems and intelligent interfaces.`,
+        title: 'Stephen Mainda | Senior Frontend Engineer & UI/UX Designer',
+        description: `Portfolio of Stephen Mainda - Architecting secure systems and intelligent interfaces.`,
         image: 'https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?q=80&w=1200&h=630&auto=format&fit=crop',
       }),
     ],
@@ -83,6 +85,7 @@ export const Route = createRootRoute({
 })
 
 function RootDocument({ children }: { children: React.ReactNode }) {
+  const location = useLocation()
   return (
     <html lang="en" className="dark">
       <head>
@@ -95,12 +98,13 @@ function RootDocument({ children }: { children: React.ReactNode }) {
               <div className="p-1.5 bg-emerald-500/10 rounded-md border border-emerald-500/20 group-hover:border-emerald-500/40 transition-colors">
                 <Terminal className="w-5 h-5 text-emerald-400" />
               </div>
-              <span className="font-bold text-lg tracking-tight text-white">Nevy<span className="text-emerald-400">.dev</span></span>
+              <span className="font-bold text-lg tracking-tight text-white">Stephen<span className="text-emerald-400">.dev</span></span>
             </Link>
             
             <nav className="flex items-center gap-6 text-sm font-medium">
               <Link to="/" className="text-slate-400 hover:text-white transition-colors" activeProps={{ className: 'text-white' }} activeOptions={{ exact: true }}>Home</Link>
               <a href="#projects" className="text-slate-400 hover:text-white transition-colors">Projects</a>
+              <Link to="/resume" className="text-slate-400 hover:text-emerald-400 transition-colors flex items-center gap-1"><FileText className="w-4 h-4"/> Resume</Link>
               <a href="https://github.com/Nevy11" target="_blank" rel="noreferrer" className="text-slate-400 hover:text-white transition-colors">
                 <Github className="w-5 h-5" />
               </a>
@@ -108,14 +112,25 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           </div>
         </header>
 
-        <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
-          {children}
+        <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full flex flex-col">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={location.pathname}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.25, ease: "easeInOut" }}
+              className="flex-1 flex flex-col"
+            >
+              {children}
+            </motion.div>
+          </AnimatePresence>
         </main>
 
         <footer className="border-t border-slate-800 bg-slate-950/50 py-8 mt-auto">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-sm text-slate-500">
-              © {new Date().getFullYear()} Nevy. All rights reserved. Building secure & scalable systems.
+              © {new Date().getFullYear()} Stephen Mainda. All rights reserved. Building secure & scalable systems.
             </p>
             <div className="flex items-center gap-4 text-slate-500">
               <a href="https://github.com/Nevy11" target="_blank" rel="noreferrer" className="hover:text-emerald-400 transition-colors"><Github className="w-4 h-4" /></a>

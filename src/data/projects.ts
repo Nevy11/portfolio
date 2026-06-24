@@ -5,6 +5,7 @@ export interface ProjectDetails {
   typeColor: string;
   role: string;
   description: string;
+  image?: string;
   stack: string[];
   links: {
     live?: string;
@@ -24,6 +25,7 @@ export const PROJECTS: ProjectDetails[] = [
     typeColor: 'text-emerald-400 border-emerald-400/20 bg-emerald-400/10',
     role: 'Lead Full-Stack Developer',
     description: 'A secure financial command center. Features full wallet management, real-time ledger accounting, secure withdrawal validation pipelines, KYC onboarding, and integrations for Stripe Checkout, custom Stripe Issuing cards, and M-Pesa (Daraja API) callback processing. Includes a Gemini-powered AI financial advisor.',
+    image: '/projects/vault.jpg',
     stack: ['React 19', 'TanStack Start', 'Supabase', 'Vite 7', 'Tailwind 4', 'Flutter'],
     links: {
       live: 'https://tanstack-start-app.vault-os.workers.dev',
@@ -45,6 +47,7 @@ export const PROJECTS: ProjectDetails[] = [
     typeColor: 'text-emerald-400 border-emerald-400/20 bg-emerald-400/10',
     role: 'Creator & Full-Stack Engineer',
     description: 'An interactive learning workspace that synchronizes structured YouTube video programming directly with an in-browser, VS Code-like Monaco code editor engine. Leverages reactive state management for real-time code execution and persistence.',
+    image: '/projects/codevia.jpg',
     stack: ['Angular', 'Angular Signals', 'Supabase Auth/DB', 'Monaco Editor', 'YouTube Player API'],
     links: {
       live: 'https://codevia.vercel.app',
@@ -65,6 +68,7 @@ export const PROJECTS: ProjectDetails[] = [
     typeColor: 'text-emerald-400 border-emerald-400/20 bg-emerald-400/10',
     role: 'Core Technical Advisor & Developer',
     description: 'A high-performance, bilingual (English & Kiswahili) wellness and personal transformation portal. Built to scale via Cloudflare serverless workers, featuring an integrated quantitative growth rating dashboard that metrics-tracks progress categories.',
+    image: '/projects/sbf.jpg',
     stack: ['TypeScript', 'Cloudflare Workers', 'Tailwind'],
     links: {
       live: 'https://sbf-web.sbf-web.workers.dev',
