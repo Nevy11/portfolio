@@ -12,11 +12,26 @@ const submitContactForm = createServerFn({ method: 'POST' })
     return data
   })
   .handler(async ({ data }) => {
-    // In a production environment, this is where we would invoke the Supabase client:
-    // const { error } = await supabase.from('inquiries').insert([data])
+    const supabaseUrl = process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL || "https://nsgfwfutwyaditcvipsz.supabase.co"
+    const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5zZ2Z3ZnV0d3lhZGl0Y3ZpcHN6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI2Njc0NjQsImV4cCI6MjA5ODI0MzQ2NH0.3A5HMBSOWg5f-Ol60PVxehHOGVWhmOahO6WUSKLTiA0"
     
-    // Simulating edge function processing time
-    await new Promise(resolve => setTimeout(resolve, 1000))
+    if (!supabaseUrl || !supabaseKey) {
+      throw new Error("Supabase credentials missing.")
+    }
+
+    const response = await fetch(`${supabaseUrl}/functions/v1/send-contact-email`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${supabaseKey}`
+      },
+      body: JSON.stringify(data)
+    })
+
+    if (!response.ok) {
+      const errorText = await response.text()
+      throw new Error(`Failed to transmit payload: ${errorText}`)
+    }
     
     return { 
       success: true, 
@@ -37,7 +52,8 @@ function ContactPage() {
     setStatus('submitting')
     setErrorMessage('')
 
-    const formData = new FormData(e.currentTarget)
+    const form = e.currentTarget
+    const formData = new FormData(form)
     const data = {
       name: formData.get('name') as string,
       email: formData.get('email') as string,
@@ -48,7 +64,7 @@ function ContactPage() {
       const response = await submitContactForm({ data })
       if (response.success) {
         setStatus('success')
-        e.currentTarget.reset()
+        form.reset()
       }
     } catch (err: any) {
       setStatus('error')
