@@ -1,5 +1,5 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
-import { SmtpClient } from "https://deno.land/x/smtp@v0.7.0/mod.ts";
+import nodemailer from "npm:nodemailer@6.9.13"
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -20,39 +20,29 @@ serve(async (req) => {
 
     const GMAIL_APP_PASSWORD = Deno.env.get('GMAIL_APP_PASSWORD')
     if (!GMAIL_APP_PASSWORD) {
-      throw new Error("Missing GMAIL_APP_PASSWORD. Please set it in your Supabase project dashboard.")
+      throw new Error("Missing GMAIL_APP_PASSWORD in environment")
     }
 
-    const client = new SmtpClient();
-
-    // Connect to Gmail's SMTP server
-    await client.connectTLS({
-      hostname: "smtp.gmail.com",
-      port: 465,
-      username: "smongare2004@gmail.com",
-      password: GMAIL_APP_PASSWORD,
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'smongare2004@gmail.com',
+        pass: GMAIL_APP_PASSWORD
+      }
     });
 
-    // Send the email
-    await client.send({
-      from: "smongare2004@gmail.com", 
-      to: "smongare2004@gmail.com",
+    const mailOptions = {
+      from: 'smongare2004@gmail.com',
+      to: 'smongare2004@gmail.com',
       subject: `New Contact Request from ${name}`,
-      content: `
-New Message Received!
+      text: `New Message Received!\n\nName: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
+      replyTo: email
+    };
 
-Name: ${name}
-Email: ${email}
-
-Message:
-${message}
-      `,
-    });
-
-    await client.close();
+    await transporter.sendMail(mailOptions);
 
     return new Response(
-      JSON.stringify({ success: true, message: "Email sent successfully via Gmail SMTP" }),
+      JSON.stringify({ success: true, message: "Email sent successfully via Gmail" }),
       { headers: { ...corsHeaders, "Content-Type": "application/json" }, status: 200 }
     )
   } catch (error) {
